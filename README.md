@@ -20,7 +20,9 @@ Coupon Management
 
 # Technologies Used
 SQL
+
 MySQL
+
 GitHub
 
 ### Database Design
@@ -55,3 +57,6 @@ Entity-Relationship Modeling
 Primary and Foreign Keys
 SQL Queries
 Database Normalization
+
+# Conclusion
+The ArtisanHub database project demonstrates the design and implementation of a relational database for a handmade products e-commerce platform. The system efficiently manages customers, artisans, products, orders, payments, deliveries, and reviews using SQL. By applying database concepts such as entities, relationships, primary keys, and foreign keys, the project ensures data integrity, minimizes redundancy, and supports efficient business operations. This project provides practical experience in database design and serves as a strong foundation for developing a complete e-commerce application in the future.
