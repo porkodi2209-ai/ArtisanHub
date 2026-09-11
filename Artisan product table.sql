@@ -135,6 +135,18 @@ SKIN_TYPE                          RATING EXPIRY_DA
 ------------------------------ ---------- ---------
 Eco-friendly handmade tote bag
 All                                   4.4 05-NOV-28
+  
+SQL> UPDATE Artisan
+  2  SET Price = 950
+  3  WHERE Product_ID = 101;
+
+1 row updated.
+
+SQL> UPDATE Artisan
+  2  SET Stock = 30
+  3  WHERE Product_ID = 104;
+
+1 row updated.
 
 SQL> DELETE FROM Artisan
   2  WHERE Product_ID = 109;
