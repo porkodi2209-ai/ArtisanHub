@@ -1,0 +1,73 @@
+SQL> CREATE TABLE Payment (
+  2      Payment_ID NUMBER PRIMARY KEY,
+  3      Order_ID NUMBER,
+  4      Payment_Mode VARCHAR2(30),
+  5      Payment_Date DATE,
+  6      Payment_Status VARCHAR2(20),
+  7      FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID)
+  8  );
+
+Table created.
+
+SQL> INSERT INTO Payment VALUES
+  2  (401, 201, 'UPI', TO_DATE('01-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (402, 202, 'Credit Card', TO_DATE('02-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (403, 203, 'Debit Card', TO_DATE('03-10-2026','DD-MM-YYYY'), 'Failed');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (404, 204, 'Cash on Delivery', TO_DATE('04-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (405, 205, 'UPI', TO_DATE('05-10-2026','DD-MM-YYYY'), 'Failed');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (406, 206, 'Credit Card', TO_DATE('06-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (407, 207, 'Debit Card', TO_DATE('07-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> INSERT INTO Payment VALUES
+  2  (408, 208, 'UPI', TO_DATE('08-10-2026','DD-MM-YYYY'), 'Successful');
+
+1 row created.
+
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE Payment
+  2  SET Payment_Status = 'Successful'
+  3  WHERE Payment_ID = 405;
+
+1 row updated.
+
+
+SQL> COMMIT;
+
+Commit complete.
