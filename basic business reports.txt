@@ -1,0 +1,96 @@
+SQL> SELECT COUNT(*) AS Total_Products
+  2  FROM Artisan;
+
+TOTAL_PRODUCTS
+--------------
+             8
+
+SQL> SELECT ROUND(AVG(Price), 2) AS Average_Price
+  2  FROM Artisan;
+
+AVERAGE_PRICE
+-------------
+       943.75
+
+SQL> SELECT c.Category_Name,
+  2         COUNT(a.Product_ID) AS Total_Products
+  3  FROM Cate_gory c
+  4  LEFT JOIN Artisan a
+  5  ON c.Category_ID = a.Category_ID
+  6  GROUP BY c.Category_Name
+  7  ORDER BY Total_Products DESC;
+
+CATEGORY_NAME                                      TOTAL_PRODUCTS
+-------------------------------------------------- --------------
+Jewellery                                                       2
+Pottery                                                         2
+Paintings                                                       2
+Handmade Bags                                                   1
+Home Decor                                                      1
+
+SQL> SELECT SUM(Total_Amount) AS Total_Order_Amount
+  2  FROM Orders;
+
+TOTAL_ORDER_AMOUNT
+------------------
+              8100
+
+SQL> SELECT Payment_Status,
+  2         COUNT(*) AS Total_Transactions
+  3  FROM Payment
+  4  GROUP BY Payment_Status;
+
+PAYMENT_STATUS       TOTAL_TRANSACTIONS
+-------------------- ------------------
+Successful                            7
+Failed                                1
+
+SQL> SELECT a.Product_ID,
+  2         a.Product_Name,
+  3         ROUND(AVG(r.Rating_Value), 2) AS Average_Rating
+  4  FROM Artisan a
+  5  JOIN Rating r
+  6  ON a.Product_ID = r.Product_ID
+  7  GROUP BY a.Product_ID, a.Product_Name
+  8  HAVING AVG(r.Rating_Value) >= 4.5
+  9  ORDER BY Average_Rating DESC;
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+AVERAGE_RATING
+--------------
+       107
+Traditional Earrings
+           4.8
+
+       103
+Wall Painting
+           4.7
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+AVERAGE_RATING
+--------------
+
+       106
+Terracotta Pot
+           4.6
+
+       101
+Beaded Necklace
+
+PRODUCT_ID
+----------
+PRODUCT_NAME
+--------------------------------------------------------------------------------
+AVERAGE_RATING
+--------------
+           4.5
+
+       108
+Decorative Painting
+           4.5
