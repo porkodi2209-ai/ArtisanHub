@@ -1,0 +1,33 @@
+SQL> SELECT c.Category_ID,
+  2         c.Category_Name,
+  3         SUM(od.Quantity * od.Price) AS Category_Revenue
+  4  FROM Cate_gory c
+  5  JOIN Artisan a
+  6  ON c.Category_ID = a.Category_ID
+  7  JOIN Order_Details od
+  8  ON a.Product_ID = od.Product_ID
+  9  GROUP BY c.Category_ID, c.Category_Name
+ 10  ORDER BY Category_Revenue DESC;
+
+CATEGORY_ID CATEGORY_NAME                                      CATEGORY_REVENUE
+----------- -------------------------------------------------- ----------------
+          4 Paintings                                         3300
+          5 Pottery                                           1750
+          1 Jewellery                                         1550
+          3 Handmade Bags                                      950
+          2 Home Decor                                         450
+
+SQL> SELECT c.Category_Name,
+  2         SUM(od.Quantity * od.Price) AS Total_Revenue
+  3  FROM Cate_gory c
+  4  JOIN Artisan a
+  5  ON c.Category_ID = a.Category_ID
+  6  JOIN Order_Details od
+  7  ON a.Product_ID = od.Product_ID
+  8  GROUP BY c.Category_Name
+  9  ORDER BY Total_Revenue DESC
+ 10  FETCH FIRST 1 ROW ONLY;
+
+CATEGORY_NAME                                      TOTAL_REVENUE
+-------------------------------------------------- -------------
+Paintings                                                   3300
